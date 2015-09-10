@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">pstat
-   &#160;<span id="projectnumber">0.3</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">Parallel filesystem stat</div>
   </td>
@@ -120,6 +120,15 @@ $(document).ready(function(){initNavTree('classpstat_1_1_walker.html','');});
  <a href="classpstat_1_1_walker.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_walker_8hpp_source.html">Walker.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for pstat::Walker:</div>
+<div class="dyncontent">
+<div class="center"><img src="classpstat_1_1_walker__coll__graph.png" border="0" usemap="#pstat_1_1_walker_coll__map" alt="Collaboration graph"/></div>
+<map name="pstat_1_1_walker_coll__map" id="pstat_1_1_walker_coll__map">
+<area shape="rect" id="node2" href="classtbb_1_1concurrent__queue.html" title="tbb::concurrent_queue\l\&lt; std::string \&gt;" alt="" coords="7,5,158,46"/>
+<area shape="rect" id="node3" href="classtbb_1_1concurrent__queue.html" title="tbb::concurrent_queue\l\&lt; std::pair\&lt; std::string,\l StarRec \&gt; \&gt;" alt="" coords="5,69,160,125"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -182,11 +191,11 @@ std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <tr class="memdesc:ad300f8b72e421b33a662f04d841cfdbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The output CSV file. <br /></td></tr>
 <tr class="separator:ad300f8b72e421b33a662f04d841cfdbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac6f29644ccaa1962d53c3516765176f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac6f29644ccaa1962d53c3516765176f"></a>
-tbb::concurrent_queue&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_walker.html#aac6f29644ccaa1962d53c3516765176f">m_DirectoryQueue</a></td></tr>
+<a class="el" href="classtbb_1_1concurrent__queue.html">tbb::concurrent_queue</a>&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_walker.html#aac6f29644ccaa1962d53c3516765176f">m_DirectoryQueue</a></td></tr>
 <tr class="memdesc:aac6f29644ccaa1962d53c3516765176f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enqueues the directories to be stated. <br /></td></tr>
 <tr class="separator:aac6f29644ccaa1962d53c3516765176f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add1e76263d86f754f23f64a6f89f8e03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add1e76263d86f754f23f64a6f89f8e03"></a>
-tbb::concurrent_queue&lt; std::pair&lt; std::string, StarRec &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_walker.html#add1e76263d86f754f23f64a6f89f8e03">m_StatRecords</a></td></tr>
+<a class="el" href="classtbb_1_1concurrent__queue.html">tbb::concurrent_queue</a>&lt; std::pair&lt; std::string, StarRec &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_walker.html#add1e76263d86f754f23f64a6f89f8e03">m_StatRecords</a></td></tr>
 <tr class="memdesc:add1e76263d86f754f23f64a6f89f8e03"><td class="mdescLeft">&#160;</td><td class="mdescRight">All the stated files/directories are stored here. The pair corresponds to the path and its stat record. <br /></td></tr>
 <tr class="separator:add1e76263d86f754f23f64a6f89f8e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0e35c3f56ff39532e6b35950f21b247"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0e35c3f56ff39532e6b35950f21b247"></a>
@@ -272,16 +281,19 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpstat_1_1_walker_a28cd9da0b6ef3c86aa7c2f07c0df1a57_cgraph.png" border="0" usemap="#classpstat_1_1_walker_a28cd9da0b6ef3c86aa7c2f07c0df1a57_cgraph" alt=""/></div>
 <map name="classpstat_1_1_walker_a28cd9da0b6ef3c86aa7c2f07c0df1a57_cgraph" id="classpstat_1_1_walker_a28cd9da0b6ef3c86aa7c2f07c0df1a57_cgraph">
-<area shape="rect" id="node2" href="classpstat_1_1_walker.html#a0b96e05cb754cd875dcb2540ac818d2f" title="Stats the specified path using lstat() system call. " alt="" coords="482,96,630,123"/>
-<area shape="rect" id="node3" href="classpstat_1_1_walker.html#a446eec33f810b0981f3abd153987972d" title="Iterates through all the directories in the m_DirectoryQueue, stating each file and folder within eac..." alt="" coords="203,125,421,152"/>
-<area shape="rect" id="node4" href="classpstat_1_1_walker.html#afe45016205a1606df6a6f00f2659302b" title="This method continuously flushes the contents of the m_StatRecords variable to a file. " alt="" coords="209,176,415,203"/>
-<area shape="rect" id="node5" href="classpstat_1_1_walker.html#a1a120982cda1db7b5bdf5a9b372e1305" title="Stores the specified stat record (file path and stat info) to the output CSV file. " alt="" coords="470,169,642,210"/>
-<area shape="rect" id="node6" href="classpstat_1_1_cached_utilities.html#aba7ce74b08a01f1f26e1ba891ca51595" title="Gets the singleton instance of this class. " alt="" coords="714,5,862,46"/>
-<area shape="rect" id="node7" href="classpstat_1_1_cached_utilities.html#a57b860effb2db882cc4dd2c6a1c12e21" title="Converts the specified time to sting of format YYYY&#45;mm&#45;dd. " alt="" coords="714,70,862,111"/>
-<area shape="rect" id="node8" href="classpstat_1_1_cached_utilities.html#a82f28b9aef2c8725b45d666629bc7088" title="Resolves the specified uid to its corresponding username in the passwd file. Retuns &quot;UNKNOWN&quot; if fail..." alt="" coords="714,135,862,177"/>
-<area shape="rect" id="node9" href="classpstat_1_1_cached_utilities.html#ae288de74c56ae9e943ffa90151d9a886" title="Resolves the specified gid to its corresponding group name in the passwd file. Retuns &quot;UNKNOWN&quot; if fa..." alt="" coords="714,201,862,242"/>
-<area shape="rect" id="node10" href="classpstat_1_1_cached_utilities.html#a6967125357284a86f3bb0928fa3ea8af" title="Returns a string representing the effective file permission from the specified file mode..." alt="" coords="691,266,885,307"/>
-<area shape="rect" id="node11" href="classpstat_1_1_cached_utilities.html#add1704ea4d517bad663f9893d61fabe1" title="Gets a string representing the file type from its mode. Returns one of the following types: ..." alt="" coords="714,331,862,373"/>
+<area shape="rect" id="node2" href="classpstat_1_1_walker.html#a0b96e05cb754cd875dcb2540ac818d2f" title="Stats the specified path using lstat() system call. " alt="" coords="482,12,630,39"/>
+<area shape="rect" id="node4" href="classtbb_1_1concurrent__queue.html#a89e0d04bee809360145af4808257b331" title="Pushes the specified element to the back of the queue. Thread safe. " alt="" coords="237,62,387,103"/>
+<area shape="rect" id="node5" href="classpstat_1_1_walker.html#a446eec33f810b0981f3abd153987972d" title="Iterates through all the directories in the m_DirectoryQueue, stating each file and folder within eac..." alt="" coords="203,128,421,155"/>
+<area shape="rect" id="node7" href="classpstat_1_1_walker.html#afe45016205a1606df6a6f00f2659302b" title="This method continuously flushes the contents of the m_StatRecords variable to a file. " alt="" coords="209,179,415,205"/>
+<area shape="rect" id="node3" href="classtbb_1_1concurrent__queue.html#ae56761c2fd191a7b367803a79ae6b814" title="Emplaces the specified element to the back of the queue. Thread safe. " alt="" coords="713,5,863,46"/>
+<area shape="rect" id="node6" href="classtbb_1_1concurrent__queue.html#a67db5f8f52d79d3b549b18c448cdb544" title="Tries to pop an element off the queue. Thread safe. " alt="" coords="481,127,631,169"/>
+<area shape="rect" id="node8" href="classpstat_1_1_walker.html#a1a120982cda1db7b5bdf5a9b372e1305" title="Stores the specified stat record (file path and stat info) to the output CSV file. " alt="" coords="470,201,642,242"/>
+<area shape="rect" id="node9" href="classpstat_1_1_cached_utilities.html#aba7ce74b08a01f1f26e1ba891ca51595" title="Gets the singleton instance of this class. " alt="" coords="714,70,862,111"/>
+<area shape="rect" id="node10" href="classpstat_1_1_cached_utilities.html#a57b860effb2db882cc4dd2c6a1c12e21" title="Converts the specified time to sting of format YYYY&#45;mm&#45;dd. " alt="" coords="714,135,862,177"/>
+<area shape="rect" id="node11" href="classpstat_1_1_cached_utilities.html#a82f28b9aef2c8725b45d666629bc7088" title="Resolves the specified uid to its corresponding username in the passwd file. Retuns &quot;UNKNOWN&quot; if fail..." alt="" coords="714,201,862,242"/>
+<area shape="rect" id="node12" href="classpstat_1_1_cached_utilities.html#ae288de74c56ae9e943ffa90151d9a886" title="Resolves the specified gid to its corresponding group name in the passwd file. Retuns &quot;UNKNOWN&quot; if fa..." alt="" coords="714,266,862,307"/>
+<area shape="rect" id="node13" href="classpstat_1_1_cached_utilities.html#a6967125357284a86f3bb0928fa3ea8af" title="Returns a string representing the effective file permission from the specified file mode..." alt="" coords="691,331,885,373"/>
+<area shape="rect" id="node14" href="classpstat_1_1_cached_utilities.html#add1704ea4d517bad663f9893d61fabe1" title="Gets a string representing the file type from its mode. Returns one of the following types: ..." alt="" coords="714,397,862,438"/>
 </map>
 </div>
 </p>
@@ -320,6 +332,16 @@ Here is the call graph for this function:</div>
 </dl>
 
 <p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classpstat_1_1_walker_a0b96e05cb754cd875dcb2540ac818d2f_cgraph.png" border="0" usemap="#classpstat_1_1_walker_a0b96e05cb754cd875dcb2540ac818d2f_cgraph" alt=""/></div>
+<map name="classpstat_1_1_walker_a0b96e05cb754cd875dcb2540ac818d2f_cgraph" id="classpstat_1_1_walker_a0b96e05cb754cd875dcb2540ac818d2f_cgraph">
+<area shape="rect" id="node2" href="classtbb_1_1concurrent__queue.html#ae56761c2fd191a7b367803a79ae6b814" title="Emplaces the specified element to the back of the queue. Thread safe. " alt="" coords="203,5,354,46"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpstat_1_1_walker_a0b96e05cb754cd875dcb2540ac818d2f_icgraph.png" border="0" usemap="#classpstat_1_1_walker_a0b96e05cb754cd875dcb2540ac818d2f_icgraph" alt=""/></div>
@@ -333,7 +355,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/mazen/code/pstat/<a class="el" href="_walker_8hpp_source.html">Walker.hpp</a></li>
+<li>/home/mazen/code/pstat/src/<a class="el" href="_walker_8hpp_source.html">Walker.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -341,7 +363,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>pstat</b></li><li class="navelem"><a class="el" href="classpstat_1_1_walker.html">Walker</a></li>
-    <li class="footer">Generated on Wed Sep 9 2015 21:45:15 for pstat by
+    <li class="footer">Generated on Fri Sep 11 2015 00:10:45 for pstat by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

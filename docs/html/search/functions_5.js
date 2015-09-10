@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mystat',['mystat',['../classpstat_1_1_walker.html#a0b96e05cb754cd875dcb2540ac818d2f',1,'pstat::Walker']]]
+  ['init',['init',['../classpstat_1_1_cached_utilities.html#a84148e80e6b63e5f469444b325f18d7d',1,'pstat::CachedUtilities']]]
 ];

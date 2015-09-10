@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">pstat
-   &#160;<span id="projectnumber">0.3</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">Parallel filesystem stat</div>
   </td>
@@ -106,24 +106,26 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>A possible use of the tool is to collect stat data for very large filesystems in order to apply Data Life Cycle (DLC) policies.</p>
 <h2>Introduction </h2>
 <p><code>pstat</code> spawns multiple threads that simultaneously collect stat records (using <code>lstat()</code> system call) from all files and directories within the specified path. While collecting, a single thread flushes any collected record to a CSV file.</p>
-<p><code>pstat</code> makes use of the producer-consumer concurrent pattern, using lock-free datastructures from Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks</a> library.</p>
+<p><code>pstat</code> makes use of the producer-consumer concurrent pattern. If the Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks (TBB)</a> library is installed, it can utilize its lock-free datastructures. Otherwise, it will use simpler lock-able standard containers but at the expense of drop in performance.</p>
 <h2>Features </h2>
 <ul>
 <li>Blazing-fast</li>
+<li>Makes use of TBB lock-free queues, if available, for maximum performance, and falls back to custom structures if not.</li>
 <li>Outputs in CSV format</li>
 <li>Supports outputting raw or human-readable stat records</li>
 <li>Supports specifying a list of directories/files to skip</li>
+<li>Supports unicode filenames</li>
+<li>Friendly Sphinx documentation (in<code>docs/html</code>) for fellow developers</li>
 </ul>
 <h2>Prerequisites </h2>
 <ul>
 <li>Linux-based operating system (tested on Ubuntu, CentOS and RHEL)</li>
 <li>A compiler that supports C++11 features (tested on GCC 4.8 and Intel Compiler 2015)</li>
 <li>Boost algorithms (obtain using <code>sudo apt-get install libboost-dev</code> or <code>sudo yum install boost-devel</code>)</li>
-<li>Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks</a> library (obtain it using <code>sudo apt-get install libtbb libtbb-dev</code> or <code>sudo yum install tbb tbb-devel</code>)</li>
+<li>[Optional, but highly recommended] Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks</a> library (obtain it using <code>sudo apt-get install libtbb libtbb-dev</code> or <code>sudo yum install tbb tbb-devel</code>)</li>
 </ul>
-<h2>Compiling </h2>
-<p>To compile, simply run <code>make</code></p>
-<h2>Running </h2>
+<h2>Installing </h2>
+<p>Run the ususal: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./configure</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;make</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;[sudo] make install</div></div><!-- fragment --><h2>Running </h2>
 <p>To collect stat info from a directory <code>/path/to/dir</code>, run:</p>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./pstat /path/to/dir</div></div><!-- fragment --><p>This will run <code>pstat</code> with the default parameters, and will produce a csv file <code>path-to-dir.csv</code> that contains all the collected stat data for all files/directories tree within that path.</p>
 <p>pstat also supports the running with the following arguments:</p>
@@ -184,7 +186,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Sep 9 2015 21:45:15 for pstat by
+    <li class="footer">Generated on Fri Sep 11 2015 00:10:45 for pstat by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

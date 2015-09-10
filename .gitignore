@@ -1,8 +1,9 @@
+Makefile
+nbproject
 *.csv
 dist
 build
 autom4te.cache
 src/config.h
-Makefile
 config.log
 config.status

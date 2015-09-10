@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">pstat
-   &#160;<span id="projectnumber">0.3</span>
+   &#160;<span id="projectnumber">0.5</span>
    </div>
    <div id="projectbrief">Parallel filesystem stat</div>
   </td>
@@ -120,6 +120,16 @@ $(document).ready(function(){initNavTree('classpstat_1_1_cached_utilities.html',
  <a href="classpstat_1_1_cached_utilities.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_cached_utilities_8hpp_source.html">CachedUtilities.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for pstat::CachedUtilities:</div>
+<div class="dyncontent">
+<div class="center"><img src="classpstat_1_1_cached_utilities__coll__graph.png" border="0" usemap="#pstat_1_1_cached_utilities_coll__map" alt="Collaboration graph"/></div>
+<map name="pstat_1_1_cached_utilities_coll__map" id="pstat_1_1_cached_utilities_coll__map">
+<area shape="rect" id="node2" href="classtbb_1_1concurrent__unordered__map.html" title="tbb::concurrent_unordered\l_map\&lt; uid_t, std::string \&gt;" alt="" coords="9,5,183,46"/>
+<area shape="rect" id="node3" href="classtbb_1_1concurrent__unordered__map.html" title="tbb::concurrent_unordered\l_map\&lt; time_t, std::string \&gt;" alt="" coords="6,70,186,111"/>
+<area shape="rect" id="node4" href="classtbb_1_1concurrent__unordered__map.html" title="tbb::concurrent_unordered\l_map\&lt; gid_t, std::string \&gt;" alt="" coords="9,135,183,177"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -164,15 +174,15 @@ Private Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a5fb1448e2717c53afd856d24d7d79123"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fb1448e2717c53afd856d24d7d79123"></a>
-tbb::concurrent_unordered_map&lt; gid_t, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_cached_utilities.html#a5fb1448e2717c53afd856d24d7d79123">m_CachedGroups</a></td></tr>
+<a class="el" href="classtbb_1_1concurrent__unordered__map.html">tbb::concurrent_unordered_map</a>&lt; gid_t, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_cached_utilities.html#a5fb1448e2717c53afd856d24d7d79123">m_CachedGroups</a></td></tr>
 <tr class="memdesc:a5fb1448e2717c53afd856d24d7d79123"><td class="mdescLeft">&#160;</td><td class="mdescRight">A hashtable from GID to group name. <br /></td></tr>
 <tr class="separator:a5fb1448e2717c53afd856d24d7d79123"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a32b68e5a9286847efccc3e2a8dc16de1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a32b68e5a9286847efccc3e2a8dc16de1"></a>
-tbb::concurrent_unordered_map&lt; uid_t, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_cached_utilities.html#a32b68e5a9286847efccc3e2a8dc16de1">m_CachedUsers</a></td></tr>
+<a class="el" href="classtbb_1_1concurrent__unordered__map.html">tbb::concurrent_unordered_map</a>&lt; uid_t, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_cached_utilities.html#a32b68e5a9286847efccc3e2a8dc16de1">m_CachedUsers</a></td></tr>
 <tr class="memdesc:a32b68e5a9286847efccc3e2a8dc16de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A hashtable from UID to username. <br /></td></tr>
 <tr class="separator:a32b68e5a9286847efccc3e2a8dc16de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a041fb3a5d824d34d11c378a8455ca423"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a041fb3a5d824d34d11c378a8455ca423"></a>
-tbb::concurrent_unordered_map&lt; time_t, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_cached_utilities.html#a041fb3a5d824d34d11c378a8455ca423">m_CachedTimes</a></td></tr>
+<a class="el" href="classtbb_1_1concurrent__unordered__map.html">tbb::concurrent_unordered_map</a>&lt; time_t, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpstat_1_1_cached_utilities.html#a041fb3a5d824d34d11c378a8455ca423">m_CachedTimes</a></td></tr>
 <tr class="memdesc:a041fb3a5d824d34d11c378a8455ca423"><td class="mdescLeft">&#160;</td><td class="mdescRight">A hashtable from timestamp to date string. <br /></td></tr>
 <tr class="separator:a041fb3a5d824d34d11c378a8455ca423"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab17272b6c0f6ada1c2a5d4788c085dca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab17272b6c0f6ada1c2a5d4788c085dca"></a>
@@ -236,7 +246,7 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>/home/mazen/code/pstat/<a class="el" href="_cached_utilities_8hpp_source.html">CachedUtilities.hpp</a></li>
+<li>/home/mazen/code/pstat/src/<a class="el" href="_cached_utilities_8hpp_source.html">CachedUtilities.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -244,7 +254,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>pstat</b></li><li class="navelem"><a class="el" href="classpstat_1_1_cached_utilities.html">CachedUtilities</a></li>
-    <li class="footer">Generated on Wed Sep 9 2015 21:45:15 for pstat by
+    <li class="footer">Generated on Fri Sep 11 2015 00:10:45 for pstat by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
