@@ -1,23 +1,28 @@
 #ifndef WALKER_HPP
 #define	WALKER_HPP
 
-#include "CachedUtilities.hpp"
-
 #ifndef _GLIBCXX_USE_SCHED_YIELD 
 #define _GLIBCXX_USE_SCHED_YIELD 1 // Forces old compilers to use this_thread_yield()
 #endif
 
+#include "CachedUtilities.hpp"
+
+#include <thread>
 #include <iostream>
 #include <fstream>
-#include <thread>
 #include <vector>
 #include <sys/stat.h>
-#include <tbb/concurrent_queue.h>
 #include <mutex>
 #include <dirent.h>
 #include <string>
 #include <sstream>
 #include <atomic>
+
+#ifdef HAVE_TBB_HEADERS_
+#include <tbb/concurrent_queue.h>
+#else
+#include "inconcurrent_queue.hpp"
+#endif
 
 #define OUTPUT_THREADS_COUNT 1 //!< Sets the number of outputting threads. Setting it to more than 1 might not be efficient though.
 
@@ -222,7 +227,6 @@ namespace pstat
 			{
 				m_OutFile << "INODE,LINKS,ACCESSED,MODIFIED,USER,GROUP,PERM,SIZE,DISK,TYPE,PATH" << std::endl;			
 			}
-			
 			// Convert all skipped paths to hashes - performance baby
 			for(const std::string& p : skipList)
 			{

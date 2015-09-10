@@ -25,7 +25,7 @@ std::string resolvePath(const char* path)
 
 int main(int argc, char** argv)
 {
-	pstat::CachedUtilities::init();
+	//pstat::CachedUtilities::init();
 	
 	// <editor-fold defaultstate="collapsed" desc="Command-line args parsing">
 	cmdline::parser argsParser;
@@ -96,8 +96,11 @@ int main(int argc, char** argv)
 	}
 	// </editor-fold>
 	
-	std::cerr << "pstat v" << VERSION << " - Parallel stat collector" << std::endl;
-	std::cerr << std::endl;
+	std::cout << "pstat v" << VERSION << " - Parallel stat collector" << std::endl;
+#ifndef HAVE_TBB_HEADERS_
+	std::cout << "NOTE: this version is not using Thread Building Blocks classes. You will not get the maximum performance." << std::endl;
+#endif
+	std::cout << std::endl;
 	
 	// In case number of hardware threads not detected
 	if(numThreads == 0)
@@ -106,13 +109,13 @@ int main(int argc, char** argv)
 		numThreads = 8;
 	}
 	
-	std::cerr << "Collecting stat from: " << path << std::endl;
-	std::cerr << "Number of threads: " << numThreads << std::endl;
-	std::cerr << "CSV output file: " << outputPath << std::endl;
-	std::cerr << "Check interval: " << checkInterval << " ms" << std::endl;
-	std::cerr << "Human output: " << (human ? "Yes" : "No") << std::endl;
-	std::cerr << std::endl;
-	std::cerr << "* Collection started" << std::endl;
+	std::cout << "Collecting stat from: " << path << std::endl;
+	std::cout << "Number of threads: " << numThreads << std::endl;
+	std::cout << "CSV output file: " << outputPath << std::endl;
+	std::cout << "Check interval: " << checkInterval << " ms" << std::endl;
+	std::cout << "Human output: " << (human ? "Yes" : "No") << std::endl;
+	std::cout << std::endl;
+	std::cout << "* Collection started" << std::endl;
 	
 	pstat::Stopwatch watch(true);
 	pstat::Walker walker(path, outputPath, ignoreList, human, numThreads);
@@ -134,18 +137,18 @@ int main(int argc, char** argv)
 			break;
 		}
 		
-		std::cerr << "-- Collected " << newSize << " stat records so far..." << std::endl;
+		std::cout << "-- Collected " << newSize << " stat records so far..." << std::endl;
 		oldSize = newSize;
 	}
 	
 	watch.stop();
 
-	std::cerr << "* Collection finished" << std::endl;
-	std::cerr << std::endl;
-	std::cerr << "Elapsed time: " << watch.getElapsed() << "s\n";
-	std::cerr << "Total files: " << walker.getTotalNumberOfRecords() << std::endl;
-	std::cerr << "Files/second: " << walker.getTotalNumberOfRecords() / watch.getElapsed() << std::endl;
-	std::cerr << std::endl;
+	std::cout << "* Collection finished" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Elapsed time: " << watch.getElapsed() << "s\n";
+	std::cout << "Total files: " << walker.getTotalNumberOfRecords() << std::endl;
+	std::cout << "Files/second: " << walker.getTotalNumberOfRecords() / watch.getElapsed() << std::endl;
+	std::cout << std::endl;
 	
 	return 0;
 }

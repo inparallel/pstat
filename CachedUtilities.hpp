@@ -6,13 +6,18 @@
 #include <unordered_map>
 #include <unistd.h>
 #include <sys/stat.h>
-#include <tbb/concurrent_unordered_map.h>
 #include <dirent.h>
 #include <string>
 #include <sstream>
 #include <ctime>
 #include <pwd.h>
 #include <grp.h>
+
+#ifdef HAVE_TBB_HEADERS_
+#include <tbb/concurrent_unordered_map.h>
+#else
+#include "inconcurrent_unordered_map.hpp"
+#endif
 
 #define USER_BUF_SIZE (sysconf(_SC_GETPW_R_SIZE_MAX))
 
