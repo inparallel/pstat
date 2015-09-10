@@ -3,7 +3,7 @@ AC_CONFIG_SRCDIR([src])
 AC_CONFIG_HEADERS([src/config.h])
 
 CXXFLAGS="$CXXFLAGS -std=c++0x"
-LDFLAGS="-lpthread"
+LDFLAGS="-pthread"
 
 # Checks for programs.
 AC_PROG_CXX
@@ -18,7 +18,7 @@ then
 be massively degraded without TBB. Please consider installing it.])
 else
 	AC_DEFINE([HAVE_TBB_HEADERS_], 1, [Define 1 if TBB was found])
-	LDFLAGS="-lpthread -ltbb"
+	LDFLAGS="-pthread -ltbb"
 fi
 
 # Checks for typedefs, structures, and compiler characteristics.

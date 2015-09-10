@@ -10,19 +10,19 @@ SRC_PATH = src
 # Space-separated pkg-config libraries used by this project
 LIBS = 
 # General compiler flags
-COMPILE_FLAGS = -std=c++0x -Wall -Wextra -O
+COMPILE_FLAGS = -std=c++0x -Wall -Wextra  -Wl,--no-as-needed 
 # Additional release-specific flags
-RCOMPILE_FLAGS = -D NDEBUG
+RCOMPILE_FLAGS = -D NDEBUG -O2
 # Additional debug-specific flags
 DCOMPILE_FLAGS = -D DEBUG
 # Add additional include paths
 INCLUDES = -I $(SRC_PATH)/
 # General linker settings
-LINK_FLAGS = -ltbb -lpthread
+LINK_FLAGS = -pthread -ltbb 
 # Additional release-specific linker settings
 RLINK_FLAGS = 
 # Additional debug-specific linker settings
-DLINK_FLAGS = -lpthread -ltbb 
+DLINK_FLAGS =  
 # Destination directory, like a jail or mounted system
 DESTDIR = /
 # Install path (bin/ is appended automatically)

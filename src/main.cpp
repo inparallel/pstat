@@ -3,6 +3,7 @@
 #include <set>
 #include <boost/algorithm/string.hpp>
 
+#include "config.h"
 #include "vendor/cmdline.h"
 #include "Walker.hpp"
 #include "Stopwatch.hpp"

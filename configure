@@ -2205,7 +2205,7 @@ ac_config_headers="$ac_config_headers src/config.h"
 
 
 CXXFLAGS="$CXXFLAGS -std=c++0x"
-LDFLAGS="-lpthread"
+LDFLAGS="-pthread"
 
 # Checks for programs.
 ac_ext=cpp
@@ -3136,7 +3136,7 @@ else
 
 $as_echo "#define HAVE_TBB_HEADERS_ 1" >>confdefs.h
 
-	LDFLAGS="-lpthread -ltbb"
+	LDFLAGS="-pthread -ltbb"
 fi
 
 # Checks for typedefs, structures, and compiler characteristics.
