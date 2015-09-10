@@ -10,11 +10,14 @@ Introduction
 `pstat` spawns multiple threads that simultaneously collect stat records (using `lstat()` system call) from all files and directories within
 the specified path. While collecting, a single thread flushes any collected record to a CSV file.
 
-`pstat` makes use of the producer-consumer concurrent pattern, using lock-free datastructures from Intel [Thread Building Blocks](https://www.threadingbuildingblocks.org/) library.
+`pstat` makes use of the producer-consumer concurrent pattern. If the Intel [Thread Building Blocks (TBB)](https://www.threadingbuildingblocks.org/) library
+is installed, it can utilize its lock-free datastructures. Otherwise, it will use simpler lock-able standard containers but at the expense of
+drop in performance.
 
 Features
 --------
 * Blazing-fast
+* Makes use of TBB lock-free queues, if available, for maximum performance, and falls back to custom structures if not.
 * Outputs in CSV format
 * Supports outputting raw or human-readable stat records
 * Supports specifying a list of directories/files to skip
@@ -26,11 +29,17 @@ Prerequisites
 * Linux-based operating system (tested on Ubuntu, CentOS and RHEL)
 * A compiler that supports C++11 features (tested on GCC 4.8 and Intel Compiler 2015)
 * Boost algorithms (obtain using `sudo apt-get install libboost-dev` or `sudo yum install boost-devel`)
-* Intel [Thread Building Blocks](https://www.threadingbuildingblocks.org/) library (obtain it using `sudo apt-get install libtbb libtbb-dev` or `sudo yum install tbb tbb-devel`)
+* [Optional, but highly recommended] Intel [Thread Building Blocks](https://www.threadingbuildingblocks.org/) library 
+  (obtain it using `sudo apt-get install libtbb libtbb-dev` or `sudo yum install tbb tbb-devel`)
 
-Compiling
+Installing
 ---------
-To compile, simply run `make`
+Run the ususal:
+```
+./configure
+make
+[sudo] make install
+```
 
 Running
 -------
