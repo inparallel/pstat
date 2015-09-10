@@ -1,129 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <logicalFolder name="HeaderFiles"
-                   displayName="Header Files"
-                   projectFiles="true">
-      <itemPath>CachedUtilities.hpp</itemPath>
-      <itemPath>Stopwatch.hpp</itemPath>
-      <itemPath>Walker.hpp</itemPath>
-      <itemPath>inconcurrent_queue.hpp</itemPath>
-      <itemPath>inconcurrent_unordered_map.hpp</itemPath>
-    </logicalFolder>
-    <logicalFolder name="ResourceFiles"
-                   displayName="Resource Files"
-                   projectFiles="true">
-    </logicalFolder>
-    <logicalFolder name="SourceFiles"
-                   displayName="Source Files"
-                   projectFiles="true">
-      <itemPath>LICENSE</itemPath>
-      <itemPath>main.cpp</itemPath>
-    </logicalFolder>
-    <logicalFolder name="vendor" displayName="vendor" projectFiles="true">
-      <itemPath>vendor/cmdline.h</itemPath>
-    </logicalFolder>
-    <logicalFolder name="TestFiles"
-                   displayName="Test Files"
-                   projectFiles="false"
-                   kind="TEST_LOGICAL_FOLDER">
-    </logicalFolder>
+    <df root="." name="0">
+      <df name="src">
+        <in>main.cpp</in>
+      </df>
+    </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>.gitignore</itemPath>
-      <itemPath>docs/Doxyfile</itemPath>
       <itemPath>Makefile</itemPath>
-      <itemPath>README.md</itemPath>
+      <itemPath>configure</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceFolderFilter>^(nbproject)$</sourceFolderFilter>
   <sourceRootList>
-    <Elem>include</Elem>
-    <Elem>vendor</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
-    <conf name="Debug" type="1">
+    <conf name="Default" type="0">
       <toolsSet>
         <compilerSet>default</compilerSet>
-        <dependencyChecking>true</dependencyChecking>
+        <dependencyChecking>false</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
-      <compileType>
-        <ccTool>
-          <standard>8</standard>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-std=c++0x"/>
+      </flagsDictionary>
+      <codeAssistance>
+      </codeAssistance>
+      <makefileType>
+        <makeTool>
+          <buildCommandWorkingDir>.</buildCommandWorkingDir>
+          <buildCommand>${MAKE} -f Makefile</buildCommand>
+          <cleanCommand>${MAKE} -f Makefile clean</cleanCommand>
+          <executablePath></executablePath>
+          <ccTool>
+            <incDir>
+              <pElem>src</pElem>
+              <pElem>.</pElem>
+            </incDir>
+            <preprocessorList>
+              <Elem>NDEBUG</Elem>
+            </preprocessorList>
+          </ccTool>
+        </makeTool>
+      </makefileType>
+      <item path="src/main.cpp" ex="false" tool="1" flavor2="8">
+        <ccTool flags="0">
         </ccTool>
-        <linkerTool>
-          <linkerLibItems>
-            <linkerLibLibItem>tbb</linkerLibLibItem>
-            <linkerLibLibItem>pthread</linkerLibLibItem>
-          </linkerLibItems>
-        </linkerTool>
-      </compileType>
-      <item path="CachedUtilities.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="LICENSE" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Stopwatch.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Walker.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="inconcurrent_queue.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="inconcurrent_unordered_map.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="vendor/cmdline.h" ex="false" tool="3" flavor2="0">
-      </item>
-    </conf>
-    <conf name="Release" type="1">
-      <toolsSet>
-        <compilerSet>default</compilerSet>
-        <dependencyChecking>true</dependencyChecking>
-        <rebuildPropChanged>false</rebuildPropChanged>
-      </toolsSet>
-      <compileType>
-        <cTool>
-          <developmentMode>5</developmentMode>
-        </cTool>
-        <ccTool>
-          <developmentMode>5</developmentMode>
-          <standard>8</standard>
-          <commandLine>-O0 -Wl,--no-as-needed</commandLine>
-          <preprocessorList>
-            <Elem>HAVE_TBB_HEADERS_</Elem>
-          </preprocessorList>
-        </ccTool>
-        <fortranCompilerTool>
-          <developmentMode>5</developmentMode>
-        </fortranCompilerTool>
-        <asmTool>
-          <developmentMode>5</developmentMode>
-        </asmTool>
-        <linkerTool>
-          <linkerLibItems>
-            <linkerLibLibItem>tbb</linkerLibLibItem>
-            <linkerLibLibItem>pthread</linkerLibLibItem>
-          </linkerLibItems>
-        </linkerTool>
-      </compileType>
-      <item path="CachedUtilities.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="LICENSE" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Stopwatch.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Walker.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="inconcurrent_queue.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="inconcurrent_unordered_map.hpp" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="vendor/cmdline.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
