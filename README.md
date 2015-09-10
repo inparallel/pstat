@@ -18,6 +18,8 @@ Features
 * Outputs in CSV format
 * Supports outputting raw or human-readable stat records
 * Supports specifying a list of directories/files to skip
+* Supports unicode filenames
+* Friendly Sphinx documentation (in`docs/html`) for fellow developers
 
 Prerequisites
 -------------

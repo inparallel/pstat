@@ -103,23 +103,41 @@ $(document).ready(function(){initNavTree('index.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><code>pstat</code> is a parallel stat command that can efficiently collect <code>lstat()</code> records for all files/subdirectories within a specified directory. It outputs the collected data in CSV format that can be easily analyzed by business-intelligence tools.</p>
-<p>It is currently used in production to collect stat data for very large filesystems (1+ PB) in order to apply Data Life Cycle (DLC) policies.</p>
+<p>A possible use of the tool is to collect stat data for very large filesystems in order to apply Data Life Cycle (DLC) policies.</p>
 <h2>Introduction </h2>
 <p><code>pstat</code> spawns multiple threads that simultaneously collect stat records (using <code>lstat()</code> system call) from all files and directories within the specified path. While collecting, a single thread flushes any collected record to a CSV file.</p>
 <p><code>pstat</code> makes use of the producer-consumer concurrent pattern, using lock-free datastructures from Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks</a> library.</p>
+<h2>Features </h2>
+<ul>
+<li>Blazing-fast</li>
+<li>Outputs in CSV format</li>
+<li>Supports outputting raw or human-readable stat records</li>
+<li>Supports specifying a list of directories/files to skip</li>
+</ul>
 <h2>Prerequisites </h2>
 <ul>
 <li>Linux-based operating system (tested on Ubuntu, CentOS and RHEL)</li>
-<li>A compiler that supports C++11 features (GCC 4.8)</li>
-<li>Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks</a> library. You can obtain it using <code>sudo apt-get install libtbb libtbb-dev</code> or <code>sudo yum install tbb tbb-devel</code></li>
+<li>A compiler that supports C++11 features (tested on GCC 4.8 and Intel Compiler 2015)</li>
+<li>Boost algorithms (obtain using <code>sudo apt-get install libboost-dev</code> or <code>sudo yum install boost-devel</code>)</li>
+<li>Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks</a> library (obtain it using <code>sudo apt-get install libtbb libtbb-dev</code> or <code>sudo yum install tbb tbb-devel</code>)</li>
 </ul>
 <h2>Compiling </h2>
 <p>To compile, simply run <code>make</code></p>
 <h2>Running </h2>
 <p>To collect stat info from a directory <code>/path/to/dir</code>, run:</p>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./pstat /path/to/dir</div></div><!-- fragment --><p>This will run <code>pstat</code> with the default parameters, and will produce a csv file <code>path-to-dir.csv</code> that contains all the collected stat data for all files/directories tree within that path.</p>
-<p>pstat also supports the running with the following options:</p>
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;usage:  [-o=string] [-t=int] [-i=unsigned long] [-r] [-?]  &lt;target stat path&gt;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;options:</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;  -o, --output-csv       Path to output file. If not specified, then it will be constructed from the target stat path.</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;  -t, --num-threads      Number of threads that walk the path tree. Defaults to number of cores in the machine if not specified.</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;  -i, --check-interval   Time interval, in milliseconds, to check for parallel stat completion. Default is 200 ms. Set it to &gt;1000 ms if pstat fails to stat all the files within the tree of the specified path.</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;  -h, --human            Displays the results in human-readable format (e.g., UIDs and GIDs are resolved to names).</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  -?, --help             Print this message.</div></div><!-- fragment --><h2>Output </h2>
+<p>pstat also supports the running with the following arguments:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./pstat [-o=string] [-t=int] [-i=unsigned long] [-r] [-?]  &lt;target stat path&gt;</div></div><!-- fragment --><p>Where:</p>
+<ul>
+<li><code>-o</code> or <code>--output-csv</code>: Path to output file. If not specified, then it will be constructed from the target stat path.</li>
+<li><code>-t</code> or <code>--num-threads</code>: Number of threads that walk the path tree. Defaults to number of cores in the machine if not specified.</li>
+<li><code>-i</code> or <code>--check-interval</code>: Time interval, in milliseconds, to check for parallel stat completion. Default is 200 ms. Set it to &gt;1000 ms if pstat fails to stat all the files within the tree of the specified path.</li>
+<li><code>-g</code> or <code>--ignore-list</code>: List of full paths to ignore, separated by a colon (e.g. /etc:/dev/null).</li>
+<li><code>-h</code> or <code>--human</code>: Displays the results in human-readable format (e.g., UIDs and GIDs are resolved to names).</li>
+<li><code>-v</code> or <code>--version</code>: Prints version info an exits.</li>
+<li><code>-?</code> or <code>--help</code>: Print help message.</li>
+</ul>
+<h2>Output </h2>
 <p>pstat outputs the collected data in CSV format, and the output header contains the following columns:</p>
 <ul>
 <li><code>INODE</code> device ID and inode of the file, separated by a hyphen</li>
@@ -150,16 +168,23 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>A sample output with <code>--human</code> option:</p>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;INODE,LINKS,ACCESSED,MODIFIED,USER,GROUP,PERM,SIZE,DISK,TYPE,PATH</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;2054-3540964,30,2015-09-04,2015-08-26,1000,1000,700,4096,4096,DIR,&quot;/home/mazen/.cache&quot;</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;2054-3670780,3,2015-09-04,2015-07-11,1000,1000,700,4096,4096,DIR,&quot;/home/mazen/.cache/gegl-0.2&quot;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;2054-3560106,11,2015-09-04,2015-09-04,1000,0,755,4096,4096,DIR,&quot;/home/mazen/tmp&quot;</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;2054-3670781,2,2015-09-04,2015-07-11,1000,1000,700,4096,4096,DIR,&quot;/home/mazen/.cache/gegl-0.2/swap&quot;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;2054-3544935,3,2015-09-04,2015-08-03,1000,1000,775,4096,4096,DIR,&quot;/home/mazen/.cache/matplotlib&quot;</div></div><!-- fragment --><h2>Running <code>pstat</code> on <code>/</code> </h2>
 <p>To collect stat data from <code>/</code>, or any directory that requires special permissions to access, then it's best to run <code>pstat</code> with <code>sudo</code>:</p>
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;sudo ./pstat /</div></div><!-- fragment --><h2>TODO </h2>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;sudo ./pstat /</div></div><!-- fragment --><h2>Credits </h2>
 <ul>
-<li>cross-platform implementation </li>
+<li>The code is a loose port of the inspiring <a href="https://github.com/sganis/statwalker">StatWalker</a> command, written by Santiago Ganis.</li>
+<li>This tool makes use of a slightly-modified version of the neat <a href="https://github.com/tanakh/cmdline">cmdline</a> library by Hideyuki Tanaka to parse command-line arguments.</li>
 </ul>
+<h2>License </h2>
+<p>pstat - Parallel stat command</p>
+<p>Copyright (C) 2015 Mazen Abdulaziz</p>
+<p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+<p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+<p>You should have received a copy of the GNU General Public License along with this program. If not, see [<a href="http://www.gnu.org/licenses">http://www.gnu.org/licenses</a>]. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Sep 6 2015 20:58:48 for pstat by
+    <li class="footer">Generated on Wed Sep 9 2015 21:45:15 for pstat by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
