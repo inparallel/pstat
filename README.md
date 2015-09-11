@@ -29,7 +29,7 @@ Prerequisites
 -------------
 * Linux-based operating system (tested on Ubuntu, CentOS and RHEL)
 * A compiler that supports C++11 features (tested on GCC 4.8 and Intel Compiler 2015)
-* [Optional, but highly recommended] Intel [Thread Building Blocks](https://www.threadingbuildingblocks.org/) library 
+* [**Optional**, but highly recommended] Intel [Thread Building Blocks](https://www.threadingbuildingblocks.org/) library 
   (obtain it using `sudo apt-get install libtbb libtbb-dev` or `sudo yum install tbb tbb-devel`)
 
 Installing
