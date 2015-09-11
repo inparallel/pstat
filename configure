@@ -3117,9 +3117,9 @@ fi
 done
 
 
-ac_fn_cxx_check_header_mongrel "$LINENO" "tbb/tbb.h" "ac_cv_header_tbb_tbb_h" "$ac_includes_default"
-if test "x$ac_cv_header_tbb_tbb_h" = xyes; then :
-
+ac_fn_cxx_check_header_mongrel "$LINENO" "tbsb/tbb.h" "ac_cv_header_tbsb_tbb_h" "$ac_includes_default"
+if test "x$ac_cv_header_tbsb_tbb_h" = xyes; then :
+  have_tbb=1
 else
   have_tbb=0
 fi
@@ -3136,7 +3136,7 @@ else
 
 $as_echo "#define HAVE_TBB_HEADERS_ 1" >>confdefs.h
 
-	LDFLAGS="-pthread -ltbb"
+	LDFLAGS="-Wl,--no-as-needed -pthread -ltbb"
 fi
 
 # Checks for typedefs, structures, and compiler characteristics.

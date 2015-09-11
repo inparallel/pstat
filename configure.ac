@@ -10,7 +10,7 @@ AC_PROG_CXX
 AC_LANG([C++])
 
 # Checks for header files.
-AC_CHECK_HEADER([tbb/tbb.h],,[have_tbb=0])
+AC_CHECK_HEADER([tbsb/tbb.h],[have_tbb=1],[have_tbb=0])
 
 if test $have_tbb == 0
 then
@@ -18,7 +18,7 @@ then
 be massively degraded without TBB. Please consider installing it.])
 else
 	AC_DEFINE([HAVE_TBB_HEADERS_], 1, [Define 1 if TBB was found])
-	LDFLAGS="-pthread -ltbb"
+	LDFLAGS="-Wl,--no-as-needed -pthread -ltbb"
 fi
 
 # Checks for typedefs, structures, and compiler characteristics.

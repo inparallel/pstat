@@ -110,7 +110,8 @@ $(document).ready(function(){initNavTree('index.html','');});
 <h2>Features </h2>
 <ul>
 <li>Blazing-fast</li>
-<li>Makes use of TBB lock-free queues, if available, for maximum performance, and falls back to custom structures if not</li>
+<li>Can build using standard C++ library only - no external packages required</li>
+<li>Makes use of <a href="(https://www.threadingbuildingblocks.org/">Intel TBB</a>) lock-free queues, if available, for maximum performance, and falls back to standard containers if not</li>
 <li>Outputs in CSV format</li>
 <li>Supports outputting raw or human-readable stat records</li>
 <li>Supports specifying a list of directories/files to skip</li>
@@ -121,8 +122,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <ul>
 <li>Linux-based operating system (tested on Ubuntu, CentOS and RHEL)</li>
 <li>A compiler that supports C++11 features (tested on GCC 4.8 and Intel Compiler 2015)</li>
-<li>Boost algorithms (obtain using <code>sudo apt-get install libboost-dev</code> or <code>sudo yum install boost-devel</code>)</li>
-<li>[Optional, but highly recommended] Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks</a> library (obtain it using <code>sudo apt-get install libtbb libtbb-dev</code> or <code>sudo yum install tbb tbb-devel</code>)</li>
+<li>[<b>Optional</b>, but highly recommended] Intel <a href="https://www.threadingbuildingblocks.org/">Thread Building Blocks</a> library (obtain it using <code>sudo apt-get install libtbb libtbb-dev</code> or <code>sudo yum install tbb tbb-devel</code>)</li>
 </ul>
 <h2>Installing </h2>
 <p>Run the ususal: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./configure</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;make</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;[sudo] make install</div></div><!-- fragment --><h2>Running </h2>
@@ -187,7 +187,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Sep 11 2015 13:40:35 for pstat by
+    <li class="footer">Generated on Fri Sep 11 2015 23:33:39 for pstat by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

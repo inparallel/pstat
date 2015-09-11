@@ -44,6 +44,15 @@ std::string resolvePath(const char* path)
 	return buff;
 }
 
+/**
+ * \brief Returns true if the specified file exists; false otherwise 
+ */
+bool fileExists(const std::string& path)
+{
+	struct stat buffer;
+	return (stat(path.c_str(), &buffer) == 0);
+}
+
 int main(int argc, char** argv)
 {
 	//pstat::CachedUtilities::init();
@@ -60,6 +69,7 @@ int main(int argc, char** argv)
 			  false, 200, cmdline::range(200, 300000));
 	argsParser.add<std::string>("ignore-list", 'g', "List of full paths to ignore, separated by a colon (e.g. /etc:/dev/null).", false);
 	argsParser.add("human", 'h', "Displays the results in human-readable format (e.g., UIDs and GIDs are resolved to names).");
+	argsParser.add("no-prompt", 'y', "Do not prompt if the specified output file exist, go ahead an overwrite.");
 	argsParser.add("version", 'v', "Prints version info an exits.");
 	argsParser.footer("<target stat path>");
 
@@ -90,6 +100,7 @@ int main(int argc, char** argv)
 	int numThreads = argsParser.get<int>("num-threads");
 	unsigned long checkInterval = argsParser.get<unsigned long>("check-interval");
 	bool human = argsParser.exist("human");
+	bool noPrompt = argsParser.exist("no-prompt");
 	
 	std::set<std::string> ignoreList;
 	
@@ -115,6 +126,20 @@ int main(int argc, char** argv)
 	{
 		outputPath = resolvePath(argsParser.get<std::string>("output-csv").c_str());
 	}
+	
+	// Prompt if the file exists
+	if(!noPrompt && fileExists(outputPath))
+	{
+		std::cout << "The specified output file (" << outputPath << ") already exists. Do you want to overwrite it? [Y/n]: ";
+		char answer = std::cin.get();
+
+		if (answer != 'Y' && answer != 'y' && answer != '\n')
+		{
+			std::cout << "The operation was canceled by the user" << std::endl;
+			return 0;
+		}
+	}
+	
 	// </editor-fold>
 	
 	std::cout << "pstat v" << VERSION << " - Parallel stat collector" << std::endl;

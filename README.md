@@ -17,7 +17,7 @@ drop in performance.
 Features
 --------
 * Blazing-fast
-* Can build using standard C++ library only - no external packages required
+* Can build using standard C++ library only - no external dependencies required
 * Makes use of [Intel TBB]((https://www.threadingbuildingblocks.org/)) lock-free queues, if available, for maximum performance, and falls back to standard containers if not
 * Outputs in CSV format
 * Supports outputting raw or human-readable stat records
@@ -34,7 +34,7 @@ Prerequisites
 
 Installing
 ---------
-Run the ususal:
+Run the usual:
 ```
 ./configure
 make
@@ -54,7 +54,7 @@ This will run `pstat` with the default parameters, and will produce a csv file `
 pstat also supports the running with the following arguments:
 
 ```
-pstat [-o=string] [-t=int] [-i=unsigned long] [-r] [-?]  <target stat path>
+pstat [-o=string] [-t=int] [-i=unsigned long] [-g=string] [-h] [-y] [-v] [-?] <target stat path>
 ```
 
 Where:
@@ -65,6 +65,7 @@ Where:
   Default is 200 ms. Set it to >1000 ms if pstat fails to stat all the files within the tree of the specified path.
 * `-g` or `--ignore-list`: List of full paths to ignore, separated by a colon (e.g. /etc:/dev/null).
 * `-h` or `--human`: Displays the results in human-readable format (e.g., UIDs and GIDs are resolved to names).
+* `-y` or `--no-prompt`: Do not prompt if the specified output file exist, go ahead an overwrite.
 * `-v` or `--version`: Prints version info an exits.
 * `-?` or `--help`: Print help message.
 
