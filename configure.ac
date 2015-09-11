@@ -10,7 +10,7 @@ AC_PROG_CXX
 AC_LANG([C++])
 
 # Checks for header files.
-AC_CHECK_HEADER([tbsb/tbb.h],[have_tbb=1],[have_tbb=0])
+AC_CHECK_HEADER([tbb/tbb.h],[have_tbb=1],[have_tbb=0])
 
 if test $have_tbb == 0
 then

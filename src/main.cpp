@@ -109,6 +109,13 @@ int main(int argc, char** argv)
 		ignoreList = split(ignore, ':');
 	}
 	
+	// Make sure the target path exists
+	if(!fileExists(path))
+	{
+		std::cerr << "Error: the specified target path (" << path << ") does not exist. Aborting..." << std::endl;
+		return -1;
+	}
+	
 	if (outputPath.size() == 0)
 	{
 		// If no output is specified, construct the csv file name using the specified path -- replacing / with - 
@@ -135,7 +142,7 @@ int main(int argc, char** argv)
 
 		if (answer != 'Y' && answer != 'y' && answer != '\n')
 		{
-			std::cout << "The operation was canceled by the user" << std::endl;
+			std::cout << "The operation was canceled by the user." << std::endl;
 			return 0;
 		}
 	}
