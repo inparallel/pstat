@@ -1,5 +1,5 @@
-Makefile
 nbproject
+Makefile
 *.csv
 dist
 build
