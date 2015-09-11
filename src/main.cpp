@@ -55,7 +55,7 @@ bool fileExists(const std::string& path)
 
 int main(int argc, char** argv)
 {
-	//pstat::CachedUtilities::init();
+	pstat::CachedUtilities::init();
 	
 	// <editor-fold defaultstate="collapsed" desc="Command-line args parsing">
 	cmdline::parser argsParser;
