@@ -1,7 +1,6 @@
 #include <iostream>
 #include <limits.h>
 #include <set>
-#include <boost/algorithm/string.hpp>
 
 #include "config.h"
 #include "vendor/cmdline.h"
@@ -9,8 +8,29 @@
 #include "Stopwatch.hpp"
 
 #define VERSION_MAJOR "0"
-#define VERSION_MINOR "4"
+#define VERSION_MINOR "6"
 #define VERSION VERSION_MAJOR "." VERSION_MINOR
+
+/**
+ * A simple method that will split the specified string by the specified delimeter,
+ * returning only distinct non-empty elements after splitting
+ */
+std::set<std::string> split(const std::string &s, char delim)
+{
+	std::set<std::string> elems;
+	std::stringstream ss(s);
+	std::string item;
+	
+	while (std::getline(ss, item, delim))
+	{
+		if(item.length() != 0)
+		{
+			elems.emplace(item);
+		}
+	}
+	
+	return elems;
+}
 
 /**
  * \brief returns the resolved path of the specified path
@@ -75,7 +95,7 @@ int main(int argc, char** argv)
 	
 	if(ignore.length() > 0)
 	{
-		boost::split(ignoreList, ignore, boost::is_any_of(":"));
+		ignoreList = split(ignore, ':');
 	}
 	
 	if (outputPath.size() == 0)
@@ -85,10 +105,10 @@ int main(int argc, char** argv)
 		
 		if(outputPath[0] == '/')
 		{
-			boost::erase_head(outputPath, 1);
+			outputPath = outputPath.substr(1);
 		}
 		
-		boost::replace_all(outputPath, "/", "-");
+		std::replace(outputPath.begin(), outputPath.end(), '/', '-');
 		outputPath = resolvePath(outputPath.c_str());
 	}
 	else

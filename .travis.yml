@@ -1,6 +1,5 @@
 language: cpp
 
-
 addons:
   apt:
     sources:
@@ -15,8 +14,6 @@ compiler:
 before_install:
   - echo $LANG
   - echo $LC_ALL
-  - sudo apt-get install -y libboost-dev
-  #- sudo apt-get install -y libtbb-dev
 
 script: ./configure && make
 

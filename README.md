@@ -17,7 +17,8 @@ drop in performance.
 Features
 --------
 * Blazing-fast
-* Makes use of TBB lock-free queues, if available, for maximum performance, and falls back to custom structures if not
+* Can build using standard C++ library only - no external packages required
+* Makes use of [Intel TBB]((https://www.threadingbuildingblocks.org/)) lock-free queues, if available, for maximum performance, and falls back to standard containers if not
 * Outputs in CSV format
 * Supports outputting raw or human-readable stat records
 * Supports specifying a list of directories/files to skip
@@ -28,7 +29,6 @@ Prerequisites
 -------------
 * Linux-based operating system (tested on Ubuntu, CentOS and RHEL)
 * A compiler that supports C++11 features (tested on GCC 4.8 and Intel Compiler 2015)
-* Boost algorithms (obtain using `sudo apt-get install libboost-dev` or `sudo yum install boost-devel`)
 * [Optional, but highly recommended] Intel [Thread Building Blocks](https://www.threadingbuildingblocks.org/) library 
   (obtain it using `sudo apt-get install libtbb libtbb-dev` or `sudo yum install tbb tbb-devel`)
 
