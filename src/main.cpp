@@ -25,7 +25,7 @@ std::set<std::string> split(const std::string &s, char delim)
 	{
 		if(item.length() != 0)
 		{
-			elems.emplace(item);
+			elems.insert(item);
 		}
 	}
 	
