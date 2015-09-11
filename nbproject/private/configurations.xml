@@ -4,14 +4,6 @@
     <df root="." name="0">
       <df name="autom4te.cache">
       </df>
-      <df name="bin">
-        <df name="release">
-        </df>
-      </df>
-      <df name="build">
-        <df name="release">
-        </df>
-      </df>
       <df name="docs">
         <df name="html">
           <df name="search">
@@ -30,6 +22,7 @@
         <in>inconcurrent_unordered_map.hpp</in>
         <in>main.cpp</in>
       </df>
+      <in>.travis.yml</in>
     </df>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

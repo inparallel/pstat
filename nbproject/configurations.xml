@@ -5,6 +5,7 @@
       <df name="src">
         <in>main.cpp</in>
       </df>
+      <in>.travis.yml</in>
     </df>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -48,6 +49,8 @@
           </ccTool>
         </makeTool>
       </makefileType>
+      <item path=".travis.yml" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="src/main.cpp" ex="false" tool="1" flavor2="8">
         <ccTool flags="0">
         </ccTool>

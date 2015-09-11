@@ -1,0 +1,14 @@
+language: cpp
+
+compiler:
+  - gcc
+
+before_install:
+  - echo $LANG
+  - echo $LC_ALL
+  - sudo apt-get install -y libboost-dev
+  - sudo apt-get install -y libtbb-dev
+
+script: ./configure && make
+
+os: linux
