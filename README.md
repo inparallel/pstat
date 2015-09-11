@@ -11,13 +11,13 @@ Introduction
 the specified path. While collecting, a single thread flushes any collected record to a CSV file.
 
 `pstat` makes use of the producer-consumer concurrent pattern. If the Intel [Thread Building Blocks (TBB)](https://www.threadingbuildingblocks.org/) library
-is installed, it can utilize its lock-free datastructures. Otherwise, it will use simpler lock-able standard containers but at the expense of
+is installed, `pstat` can utilize its lock-free datastructures. Otherwise, it will use simpler lock-able standard containers but at the expense of
 drop in performance.
 
 Features
 --------
 * Blazing-fast
-* Makes use of TBB lock-free queues, if available, for maximum performance, and falls back to custom structures if not.
+* Makes use of TBB lock-free queues, if available, for maximum performance, and falls back to custom structures if not
 * Outputs in CSV format
 * Supports outputting raw or human-readable stat records
 * Supports specifying a list of directories/files to skip
@@ -46,7 +46,7 @@ Running
 To collect stat info from a directory `/path/to/dir`, run:
 
 ```
-./pstat /path/to/dir
+pstat /path/to/dir
 ```
 
 This will run `pstat` with the default parameters, and will produce a csv file `path-to-dir.csv` that contains all the collected stat data for all files/directories tree within that path. 
@@ -54,7 +54,7 @@ This will run `pstat` with the default parameters, and will produce a csv file `
 pstat also supports the running with the following arguments:
 
 ```
-./pstat [-o=string] [-t=int] [-i=unsigned long] [-r] [-?]  <target stat path>
+pstat [-o=string] [-t=int] [-i=unsigned long] [-r] [-?]  <target stat path>
 ```
 
 Where:
@@ -123,14 +123,15 @@ Running `pstat` on `/`
 To collect stat data from `/`, or any directory that requires special permissions to access, then it's best to run `pstat` with `sudo`:
 
 ```
-sudo ./pstat /
+sudo pstat /
 ```
 
-Credits
--------
+Thanks To
+---------
 * The code is a loose port of the inspiring [StatWalker](https://github.com/sganis/statwalker) command, written by Santiago Ganis.
 * This tool makes use of a slightly-modified version of the neat [cmdline](https://github.com/tanakh/cmdline) library by Hideyuki Tanaka
   to parse command-line arguments.
+* The Makefile in this project is based on [GenericMakefile](https://github.com/mbcrawfo/GenericMakefile), by Michael Crawford
 
 License
 -------
