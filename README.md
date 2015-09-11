@@ -1,4 +1,4 @@
-pstat - Parallel stat
+pstat - Parallel stat [![Bulid status](https://travis-ci.org/ParallelMazen/pstat.svg?branch=master)](https://travis-ci.org/ParallelMazen/pstat)
 =====================
 `pstat` is a parallel stat command that can efficiently collect `lstat()` records for all files/subdirectories within a specified directory.
 It outputs the collected data in CSV format that can be easily analyzed by business-intelligence tools.
