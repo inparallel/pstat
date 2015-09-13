@@ -15,6 +15,6 @@ before_install:
   - echo $LANG
   - echo $LC_ALL
 
-script: ./configure CXX=gcc-4.8 && make
+script: ./configure CXX=g++-4.8 && make
 
 os: linux
