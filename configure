@@ -2206,6 +2206,7 @@ ac_config_headers="$ac_config_headers src/config.h"
 
 CXXFLAGS="$CXXFLAGS -std=c++0x"
 LDFLAGS="-pthread"
+CXX=$CXX
 
 # Checks for programs.
 ac_ext=cpp

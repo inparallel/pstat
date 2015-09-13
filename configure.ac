@@ -4,6 +4,7 @@ AC_CONFIG_HEADERS([src/config.h])
 
 CXXFLAGS="$CXXFLAGS -std=c++0x"
 LDFLAGS="-pthread"
+CXX=$CXX
 
 # Checks for programs.
 AC_PROG_CXX
